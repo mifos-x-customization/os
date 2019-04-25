@@ -739,9 +739,11 @@ public final class LoanApplicationTerms {
      * general method to calculate totalInterestDue discounting any grace
      * settings
      */
-    private Money calculateTotalFlatInterestDueWithoutGrace(final PaymentPeriodsInOneYearCalculator calculator, final MathContext mc) {
+    private Money calculateTotalFlatInterestDueWithoutGrace(final PaymentPeriodsInOneYearCalculator calculator,MathContext mc) {
        
         Money totalInterestDue = this.principal.zero();
+        // Round down added to match interest rate.
+        mc = new MathContext(4, RoundingMode.DOWN);
 
         switch (this.interestMethod) {
             case FLAT:
