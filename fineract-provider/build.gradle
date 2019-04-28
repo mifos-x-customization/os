@@ -72,6 +72,9 @@ buildDir = new File(rootProject.projectDir, "../build")
 repositories {
 	jcenter()
 	// mavenLocal() // useful for local dev using MariaDB4j SNAPSHOTs (not needed for real-world non-SNAPHOT builds)
+	maven {
+	url "http://nexus.pentaho.org/content/repositories/omni/"
+    }
 }
 openjpa {
     files = fileTree(sourceSets.main.output.classesDir).matching {
